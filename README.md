@@ -40,6 +40,6 @@ This project showcases my work, skills, and experience as a **Python Developer, 
 
 ## 🌟 Live Demo
 👉 The portfolio will be hosted with **GitHub Pages** at:  
-[https://Tom-1508.github.io/portfolio]([https://Tom-1508.github.io/portfolio])
+🔗 **Live Demo:** [Portfolio Website](https://tom-1508.github.io/Portfolio/)  
 
 ---
