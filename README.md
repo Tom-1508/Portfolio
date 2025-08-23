@@ -34,7 +34,7 @@ This project showcases my work, skills, and experience as a **Python Developer, 
 ## 📬 Contact
 - **GitHub:** [Tom-1508](https://github.com/Tom-1508)  
 - **LinkedIn:** [Tamal Majumdar](https://www.linkedin.com/in/tamal-majumdar-a685a61b4)  
-- **Email:** tamal.majumdar@example.com  
+- **Email:** tamalcrj2002@gmail.com  
 
 ---
 
