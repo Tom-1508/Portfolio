@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tamal Majumdar - Python Developer | Data Enthusiast | Builder of Interactive Web Tools.">
+    <meta name="keywords" content="Python Developer, Data Science, Streamlit, Portfolio, Tamal Majumdar">
+    <meta name="author" content="Tamal Majumdar">
+
+    <title>Tamal Majumdar - Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+      :root {
+        --primary-color: #0ea5e9;
+        --secondary-color: #06b6d4;
+        --accent-color: #0284c7;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #f1f5f9;
+        --border-color: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      [data-theme="dark"] {
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --border-color: #475569;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: var(--bg-primary);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+      
+      .theme-toggle {
+        background: none;
+        border: 2px solid var(--border-color);
+        color: var(--text-primary);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        border-color: var(--primary-color);
+        transform: scale(1.1);
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 6rem;
+        background: linear-gradient(
+          135deg,
+          var(--bg-primary) 0%,
+          var(--bg-secondary) 100%
+        );
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-text .tagline {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-text .intro {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        border: 2px solid var(--border-color);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-placeholder {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        overflow: hidden; /* ensures image stays inside circle */
+        box-shadow: var(--shadow-lg);
+        transition: transform 0.3s ease;
+        border: 5px solid transparent;
+        background: linear-gradient(
+            135deg,
+            var(--primary-color),
+            var(--secondary-color)
+          )
+          border-box;
+      }
+
+      .profile-placeholder:hover {
+        transform: scale(1.05);
+      }
+
+      .profile-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* makes photo scale and crop nicely */
+        display: block;
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 6rem 0;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        color: var(--text-primary);
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 4rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-image {
+        width: 250px;
+        height: 250px;
+        border-radius: 20px;
+        overflow: hidden; /* ensures photo doesn’t spill out */
+        box-shadow: var(--shadow);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 115%;
+        object-fit: cover; /* crops & fits without distortion */
+        display: block;
+        border-radius: 20px; /* matches parent’s rounded corners */
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-color);
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .project-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tech-tag {
+        background: var(--primary-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .project-description {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .project-link:hover {
+        color: var(--accent-color);
+      }
+
+      /* Education Section */
+      .education-timeline {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .education-item {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .education-item h3 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .education-item .degree {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .education-item .details {
+        color: var(--text-secondary);
+      }
+
+      /* Leadership Section */
+      .leadership-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .leadership-card {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .leadership-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .leadership-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 1.5rem;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+      }
+
+      .skill-category h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .skill-tag {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        border: 1px solid var(--border-color);
+      }
+
+      /* Contact Section */
+      .contact {
+        background: var(--bg-secondary);
+      }
+
+      .contact-content {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .contact-item i {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .social-link {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .nav-links.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+
+        .hero-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-container {   /* parent div */
+            display: flex;
+            justify-content: center;  /* horizontal center */
+            align-items: center;      /* vertical center */
+            flex-direction: column;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .about-image {
+            margin: 0 auto;  /* centers horizontally */
+            display: block;  /* ensures centering works */
+        }
+
+        .about-text {
+            text-align: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+      }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Animation classes */
+      .fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+            <div class="logo">TM</div>
+            <!-- <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button> -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Tamal Majumdar</h1>
+            <p class="tagline">
+              Python Developer | Data Enthusiast | Builder of Interactive Web
+              Tools
+            </p>
+            <p class="intro">
+              Experienced in building interactive web applications, automating
+              data workflows, and creating dynamic dashboards using modern
+              Python technologies.
+            </p>
+            <div class="hero-buttons">
+              <a href="#contact" class="btn btn-primary">
+                <i class="fas fa-envelope"></i>
+                Get in Touch
+              </a>
+              <a
+                href="https://github.com/Tom-1508"
+                target="_blank"
+                class="btn btn-secondary"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/tamal-majumdar-a685a61b4"
+                target="_blank"
+                class="btn btn-secondary"
+              >
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+              </a>
+              <a href="resume/Tamal_Majumdar_Resume.pdf" download class="btn btn-primary">
+                <i class="fas fa-file-download"></i> Resume
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="profile-placeholder">
+              <img
+                src="images/Tamal_profile_pic.jpg"
+                alt="Tamal Majumdar"
+                class="profile-photo"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="images/Tamal_profile_pic2.jpg"
+              alt="Tamal Majumdar"
+              class="profile-photo"
+            />
+          </div>
+          <div class="about-text">
+            <p>
+              I'm a passionate Python developer with expertise in building
+              interactive web applications and automating data workflows. My
+              experience spans creating dynamic dashboards using Streamlit,
+              Pandas, NumPy, and Plotly, with a focus on CSV processing, data
+              visualization, and delivering scalable, user-centric software
+              solutions.
+            </p>
+            <p>
+              Currently pursuing my Bachelor's in Information Technology at B.P.
+              Poddar Institute of Management and Technology, I combine academic
+              knowledge with practical experience to create meaningful digital
+              solutions that solve real-world problems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          A showcase of my recent work in Python development and data
+          visualization
+        </p>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Finance Tracker</h3>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Plotly</span>
+              <span class="tech-tag">Pandas</span>
+            </div>
+            <p class="project-description">
+              Interactive personal finance dashboard with real-time expense
+              tracking, automated CSV processing, and intelligent
+              categorization. Features dynamic visualizations and user-centered
+              design for actionable financial insights.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/Tom-1508/fintrack_project"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a
+                href="https://fintrackproject-77ustmp2brihre5gzgpxsr.streamlit.app/"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                Live Demo
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>Banking System</h3>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Database</span>
+            </div>
+            <p class="project-description">
+              Comprehensive bank management system with secure authentication,
+              account management, and admin features. Includes structured
+              database schema, CRUD operations, and CSV export functionality.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/Tom-1508/banking-system"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a
+                href="https://banking-system-st.streamlit.app/"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                Live Demo
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>ZStat Pro</h3>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Statistics</span>
+              <span class="tech-tag">Analytics</span>
+            </div>
+            <p class="project-description">
+              Advanced statistical analysis tool built with Python and
+              Streamlit. Provides comprehensive statistical calculations, data
+              visualization, and analytical insights for data-driven decision
+              making.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/Tom-1508/zstat-pro"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a
+                href="https://zstat-pro.streamlit.app/"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                Live Demo
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>TextAnalyzer Pro</h3>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">Text Mining</span>
+            </div>
+            <p class="project-description">
+              Powerful text analysis application featuring natural language
+              processing capabilities. Performs sentiment analysis, text
+              statistics, keyword extraction, and comprehensive text insights.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/Tom-1508/TextAnalyzer-Pro"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a
+                href="https://textanalyzer-pro-bru6ahgfbl6udbkwrdw5df.streamlit.app/"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                Live Demo
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>ChatGPT Clone</h3>
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">API</span>
+              <span class="tech-tag">UI/UX</span>
+            </div>
+            <p class="project-description">
+              Fun exploration project recreating ChatGPT's interface and
+              functionality. Built for learning and experimentation with modern
+              web technologies and AI integration patterns.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/Tom-1508/ChatGPT"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a
+                href="https://talknet-xi.vercel.app/"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="education-timeline">
+          <div class="education-item">
+            <h3>B.P. Poddar Institute of Management and Technology</h3>
+            <p class="degree">
+              Bachelor of Technology - Information Technology
+            </p>
+            <p class="details">GPA: 7.464 | Expected Graduation: June 2026</p>
+            <p class="details">
+              Relevant Coursework: Python Programming, Data Structures &
+              Algorithms, DBMS
+            </p>
+          </div>
+          <div class="education-item">
+            <h3>Chittaranjan High School</h3>
+            <p class="degree">Higher Secondary Education (Class 12)</p>
+            <p class="details">Percentage: 88.2% | Completed: March 2021</p>
+          </div>
+          <div class="education-item">
+            <h3>Chittaranjan Deshbandhu Vidyalaya</h3>
+            <p class="degree">Secondary Education (Class 10)</p>
+            <p class="details">Percentage: 88.71% | Completed: March 2019</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Leadership & Achievements</h2>
+        <div class="leadership-grid">
+          <div class="leadership-card">
+            <div class="leadership-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>TechStorm 2.24</h3>
+            <p><strong>Volunteer Lead</strong></p>
+            <p>
+              Successfully organized and led the "Tech Hunt" event, managing
+              over 50 participants and coordinating event logistics.
+            </p>
+            <p class="details">March 2024</p>
+          </div>
+          <div class="leadership-card">
+            <div class="leadership-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3>Tech Enquesta 2.23</h3>
+            <p><strong>Winner</strong></p>
+            <p>
+              Secured 1st position in intra-college technical quiz organized by
+              IEEE, demonstrating strong problem-solving and technical
+              knowledge.
+            </p>
+            <p class="details">November 2024</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Languages</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-book"></i> Libraries</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Matplotlib</span>
+              <span class="skill-tag">Seaborn</span>
+              <span class="skill-tag">Plotly</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-tools"></i> Frameworks & Tools</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Streamlit</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-database"></i> Data Handling</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">EDA</span>
+              <span class="skill-tag">Data Cleaning</span>
+              <span class="skill-tag">CSV Processing</span>
+              <span class="skill-tag">Data Transformation</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-chart-bar"></i> Analysis & Visualization</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Statistical Analysis</span>
+              <span class="skill-tag">Data Visualization</span>
+              <span class="skill-tag">Dashboarding</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-language"></i> Languages</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Bengali (Native)</span>
+              <span class="skill-tag">English (C1)</span>
+              <span class="skill-tag">Hindi (B2)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+          <p class="section-subtitle">
+            I'm always interested in discussing new opportunities and exciting
+            projects. Let's connect!
+          </p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>tamalcrj2002@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+91 8972610730</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kolkata, West Bengal</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a
+              href="https://github.com/Tom-1508"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/tamal-majumdar-a685a61b4"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              href="https://x.com/Majumdar15Tamal"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:tamalcrj2002@gmail.com" class="social-link">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
+      const themeIcon = themeToggle.querySelector("i");
+
+      // Check for saved theme preference or default to light
+      const currentTheme = localStorage.getItem("theme") || "light";
+      if (currentTheme === "dark") {
+        body.setAttribute("data-theme", "dark");
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const isDark = body.getAttribute("data-theme") === "dark";
+
+        if (isDark) {
+          body.removeAttribute("data-theme");
+          themeIcon.classList.replace("fa-sun", "fa-moon");
+          localStorage.setItem("theme", "light");
+        } else {
+          body.setAttribute("data-theme", "dark");
+          themeIcon.classList.replace("fa-moon", "fa-sun");
+          localStorage.setItem("theme", "dark");
+        }
+      });
+
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animate sections on scroll
+      gsap.utils.toArray(".section").forEach((section) => {
+        gsap.to(section, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+
+      // Animate hero elements
+      gsap
+        .timeline()
+        .from(".hero-text h1", { opacity: 0, y: 50, duration: 1, delay: 0.5 })
+        .from(
+          ".hero-text .tagline",
+          { opacity: 0, y: 30, duration: 0.8 },
+          "-=0.5"
+        )
+        .from(
+          ".hero-text .intro",
+          { opacity: 0, y: 30, duration: 0.8 },
+          "-=0.3"
+        )
+        .from(".hero-buttons", { opacity: 0, y: 30, duration: 0.8 }, "-=0.3")
+        .from(
+          ".profile-photo",
+          { opacity: 0, scale: 0.8, duration: 1 },
+          "-=0.8"
+        );
+
+      // Animate project cards
+      gsap.utils.toArray(".project-card").forEach((card, index) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+          },
+        });
+      });
+
+      // Animate skill categories
+      gsap.utils.toArray(".skill-category").forEach((category, index) => {
+        gsap.from(category, {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: category,
+            start: "top 85%",
+          },
+        });
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Add floating animation to profile placeholder
+      gsap.to(".profile-placeholder", {
+        y: -20,
+        duration: 2,
+        yoyo: true,
+        repeat: -1,
+        ease: "power2.inOut",
+      });
+
+      // Add hover animations for project cards
+      document.querySelectorAll(".project-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, { scale: 1.02, duration: 0.3 });
+        });
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, { scale: 1, duration: 0.3 });
+        });
+      });
+    </script>
+  </body>
+</html>
