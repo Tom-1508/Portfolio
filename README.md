@@ -34,12 +34,16 @@ This project showcases my work, skills, and experience as a **Python Developer, 
 ## 📬 Contact
 - **GitHub:** [Tom-1508](https://github.com/Tom-1508)  
 - **LinkedIn:** [Tamal Majumdar](https://www.linkedin.com/in/tamal-majumdar-a685a61b4)  
-- **Email:** tamal.majumdar@example.com  
+- **Email:** tamalcrj2002@gmail.com  
 
 ---
 
 ## 🌟 Live Demo
 👉 The portfolio will be hosted with **GitHub Pages** at:  
-[https://Tom-1508.github.io/portfolio](https://Tom-1508.github.io/portfolio)
+## 🚀 Live Demo
+
+- GitHub Pages: [Portfolio on GitHub Pages](https://tom-1508.github.io/Portfolio/)  
+- Vercel: [Portfolio on Vercel](https://tamal-majumdar.vercel.app)  
+  
 
 ---
